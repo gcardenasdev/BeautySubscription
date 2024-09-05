@@ -1,1 +1,159 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playwrite+CU&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playwrite+CU&display=swap');
+
+:root {
+
+  --alabaster: #FFFCFA;
+  --pink: #FBE9E6;
+  --light-pink: #D9D9D9;
+  --gunmetal: #232F31;
+  --night: #0a0d0a;
+
+  --f-main:"Lato", sans-serif;
+  --f-logo:"Merriweather", serif;
+
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit; /* Get rid of all font sizes and heights */
+}
+
+html {
+  
+  hanging-punctuation: first last; /* Not supported in Chrome */
+}
+
+body {
+  min-height: 100vh;
+  font-size: 1rem;
+  font-family: var(--f-main);
+}
+
+/* Media responsive */
+img, picture, svg, video {
+  display: block;
+  max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+
+p {
+  max-width: 75ch;
+  text-wrap: pretty; /* Prevents orphans on lines */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :has(:target) {
+    scroll-behavior: smooth;
+    scroll-padding-top: 3rem;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* Nav Bar Styles*/
+
+  
+.logo {
+  font-family: var(--f-logo);
+  font-weight: 600;
+  font-size: 2em;
+}
+
+header {
+  background-color:var(--alabaster);
+  padding: 1em 0;
+}
+
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2em;
+}
+
+.primary-nav {
+  position: absolute;
+  background-color: var(--alabaster);
+  top: 70px;
+  left: 0;
+  width: 100%;
+}
+
+.primary-nav_list {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+
+.primary-nav__item {
+  padding: 0.6em 1em;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: black;
+
+}
+
+.primary-nav_item a {
+  display: inline-block;
+  padding: 1em;
+  color: black;
+  letter-spacing: 0.05em;
+}
+
+.primary-nav_item a:hover, .primary-nav_item a:focus {
+  color: var(--night);
+}
+
+#checkbox{
+  display: none;
+}
+
+#checkbox:checked ~ nav ul{
+  max-height: 200px;
+  padding: 15px 0;
+  transition: all 0.5s;
+}
+
+@media (min-width: 768px){
+  .mobile-icons{
+    display: none;
+  }
+
+  .nav-container{
+    padding: 0 4em;
+  }
+
+  .primary-nav{
+    position: relative;
+    top: -10px;
+    background-color: transparent;
+  }
+
+  .primary-nav_list{
+    max-height: 70px;
+    padding: 15px 0;
+    text-align: right;
+  }
+
+  .primary-nav__item{
+    display:inline-flex;
+    padding-left: 20px;
+  }
+}
