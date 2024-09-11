@@ -14,9 +14,11 @@ function NavBar(){
                 <input type="checkbox" id="checkbox"></input>
                 <nav className="primary-nav">
                     <ul className="primary-nav_list hide">
-                        <li className="primary-nav__item"><a href="#">About</a></li>
-                        <li className="primary-nav__item"><a href="#">Pricing</a></li>
-                        <li className="primary-nav__item"><a href="#">Shop</a></li>
+                        <li className="primary-nav_item"><a href="#">About</a></li>
+                        
+                        <li className="primary-nav_item"><a href="#">Pricing</a></li>
+                        
+                        <li className="primary-nav_item"><a href="#">Shop</a></li>
                     </ul>
                 </nav>
                 <label htmlFor="checkbox">
