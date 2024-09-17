@@ -21,7 +21,7 @@ function NavBar(){
         <div>
             <header>
                 <nav className={styles.navbar}>
-                    <a href="#home" className={styles.logo}>Beauty Box</a>
+                    <a href="#home" className={styles.logo}>Gentle Box</a>
 
                     <ul className={`${styles.navMenu}  ${isActive ? styles.active : ''}`}>
                         <li onClick={removeActive}><a href="#About" className={styles.navLink}>About</a></li>

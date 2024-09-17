@@ -1,5 +1,5 @@
 import './App.css'
-import NavBar from './NavBar.jsx'
+import NavBar from './NavBar/NavBar.jsx'
 import Hero from './Hero.jsx'
 import About from './About.jsx'
 import Pricing from './Pricing.jsx'

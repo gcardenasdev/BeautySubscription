@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playwrite+CU&display=swap');
+
 ul {
     list-style: none;
   }
@@ -14,14 +16,15 @@ ul {
     justify-content: space-between;
     align-items: center;
     gap:  1em;
-    min-height: 5em;
+    min-height: 8em;
   }
   
   
   /* logo  */
   .logo {
     font-size: 1.6em;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Lato", sans-serif;
+    font-weight: 600;
   }
   
   
@@ -29,7 +32,6 @@ ul {
   .navMenu {
     display: flex;
     justify-content: space-between;
-    align-items: left;
     gap: 60px;
   }
   

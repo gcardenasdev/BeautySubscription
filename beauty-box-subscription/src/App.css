@@ -38,8 +38,10 @@ body {
 
 /* Media responsive */
 img, picture, svg, video {
-  display: block;
   max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -128,11 +130,12 @@ h2 {
   color: var(--gunmetal);
   padding: 5% 37% 5% 5%;
   z-index: 0;
-  top: 1;
+  top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   margin: 1em 3em 0.8em 0;
+  max-width: 78em;
 }
 
 .hero-btn {
@@ -148,21 +151,70 @@ h2 {
   font-size: 0.7em;
   text-transform: uppercase;
 }
-/* About Section */
 
+@media screen and (min-width: 780px){
 
+  .overlay-text h1{
+    font-size: 5em;
+  }
 
+  .overlay-text p {
+    font-size: 1.5em;
+  }
 
+  .hero-btn {
+    font-size: 1.5em;
+    max-width: 20em;
+    padding: 1.5em 2em;
+  }
 
+}
 
 
 
 /* Pricing Section*/
 .pricing {
   background-color: var(--pink);
+  padding: 5em 0;
 }
 
 .pricing-card_price{
   font-size: 2em;
   font-weight: 600;
 }
+
+@media screen and (min-width: 40em){
+
+  .about {
+    display: grid;
+    gap: 3em;
+    
+  }
+  .about-header {
+    display: flex;
+    gap: 3em;
+    max-width: 30em;
+    margin: 0 6em;
+  }
+  
+  .about-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+    flex-shrink: 0;
+    max-width: 25em;
+  }
+  
+  .card-container {
+    display: flex;
+    gap: 3em;
+    padding: 3em 0;
+  }
+
+  
+
+
+  
+  }
