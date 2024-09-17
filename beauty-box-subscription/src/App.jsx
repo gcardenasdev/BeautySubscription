@@ -13,7 +13,7 @@ function App() {
 
       <NavBar/>
       <Hero/>
-      <div className="container">
+      <div>
         <About/>
         <Pricing/>
         <Footer/>

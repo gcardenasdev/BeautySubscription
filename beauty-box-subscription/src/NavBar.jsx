@@ -1,33 +1,44 @@
-import Bars from './Bars.jsx'
+import {useState} from 'react'
+import styles from './NavBar.module.css'
+
 
 
 function NavBar(){
-    
+
+    const [isActive, setIsActive] = useState(false);
+
+    const toggleActiveClass = () => {
+        setIsActive(!isActive);
+    }
+
+    const removeActive = () => {
+        setIsActive(false);
+    }
+
     return(
 
         <>
+        <div>
             <header>
-                <div className="nav-container">
-                        <div className="logo">
-                            <a href="#">Beauty Box</a>
-                        </div>
-                <input type="checkbox" id="checkbox"></input>
-                <nav className="primary-nav">
-                    <ul className="primary-nav_list hide">
-                        <li className="primary-nav_item"><a href="#">About</a></li>
-                        
-                        <li className="primary-nav_item"><a href="#">Pricing</a></li>
-                        
-                        <li className="primary-nav_item"><a href="#">Shop</a></li>
+                <nav className={styles.navbar}>
+                    <a href="#home" className={styles.logo}>Beauty Box</a>
+
+                    <ul className={`${styles.navMenu}  ${isActive ? styles.active : ''}`}>
+                        <li onClick={removeActive}><a href="#About" className={styles.navLink}>About</a></li>
+                        <li onClick={removeActive}><a href="#Pricing" className={styles.navLink}>Pricing</a></li>
+                        <li onClick={removeActive}><a href="#Shop" className={styles.navLink}>Shop</a></li>
                     </ul>
-                </nav>
-                <label htmlFor="checkbox">
-                    <div className="mobile-icons">
-                        <Bars/>
+
+                    <div className={`${styles.hamburger} ${isActive ? styles.active : ''}`}  onClick={toggleActiveClass}>
+                        <span className={styles.bar}></span>
+                        <span className={styles.bar}></span>
+                        <span className={styles.bar}></span>
                     </div>
-                </label>
-                </div>
+                </nav>
+
             </header>
+        </div>
+         
 
         </>
     );
