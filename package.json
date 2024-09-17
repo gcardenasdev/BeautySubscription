@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react-reveal": "^1.2.2",
+    "reveal.js": "^5.1.0"
+  }
+}

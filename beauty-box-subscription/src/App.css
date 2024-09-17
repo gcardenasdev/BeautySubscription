@@ -54,6 +54,12 @@ p {
   text-wrap: pretty; /* Prevents orphans on lines */
 }
 
+.flex-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   :has(:target) {
     scroll-behavior: smooth;
@@ -81,7 +87,7 @@ ul, ol {
 .card{
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   width: 21em;
-  height: 14em;
+  height: auto;
   padding: 2em;
   display: flex;
   flex-direction: column;
@@ -89,6 +95,19 @@ ul, ol {
   text-align: center;
   border-radius: 10px;
   background-image: linear-gradient(#fff 35%, rgb(0,0,0,0) 35%);
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+.card-container {
+  display: grid;
+  gap: 3em;
+  padding-top: 1em;
 }
 
 .card-body{
@@ -183,6 +202,11 @@ h2 {
   font-weight: 600;
 }
 
+
+/* About Section*/
+
+
+
 @media screen and (min-width: 40em){
 
   .about {
@@ -192,7 +216,8 @@ h2 {
   }
   .about-header {
     display: flex;
-    gap: 3em;
+    flex-direction: row;
+    gap: 4em;
     max-width: 30em;
     margin: 0 6em;
   }
@@ -212,9 +237,6 @@ h2 {
     gap: 3em;
     padding: 3em 0;
   }
-
-  
-
 
   
   }

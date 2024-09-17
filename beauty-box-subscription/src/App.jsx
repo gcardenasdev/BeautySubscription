@@ -1,9 +1,10 @@
+import Reveal from 'reveal.js'
 import './App.css'
 import NavBar from './NavBar/NavBar.jsx'
 import Hero from './Hero.jsx'
 import About from './About.jsx'
 import Pricing from './Pricing.jsx'
-import Footer from './Footer.jsx'
+import Footer from './Footer/Footer.jsx'
 
 
 function App() {
@@ -12,11 +13,15 @@ function App() {
     <>
 
       <NavBar/>
-      <Hero/>
+      
       <div>
-        <About/>
-        <Pricing/>
-        <Footer/>
+        
+          <Hero/>
+          <About/>
+          <Pricing/>
+          <Footer/>
+        
+
       </div>
       
 

@@ -4,6 +4,7 @@ function Card(props){
 
     <div className="card">
         <div className="card-header">
+            <span>{props.icon}</span>
             <h3 className="card-title">{props.title}</h3>
         </div>
         <div className="card-body">
