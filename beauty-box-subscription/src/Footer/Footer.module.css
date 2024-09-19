@@ -1,0 +1,22 @@
+
+.social {
+    display: flex;
+    gap: 1em;
+}
+
+.links {
+    text-align: center;
+    
+}
+
+.links p {
+    padding: 0.5em 0;
+}
+
+
+@media screen and (min-width: 40em){
+
+
+
+
+}

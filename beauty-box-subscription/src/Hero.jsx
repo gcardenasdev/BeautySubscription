@@ -11,7 +11,7 @@ function Hero() {
             <div className='overlay-text'>
                 <h1>Gentle Beauty at Your Doorstep</h1>
                 <p>A curated monthly box with the best products for your sensitive skin</p>
-                <button className="hero-btn">Get Yours Now</button>
+                <a href="#Shop"><button className="hero-btn">Get Yours Now</button></a>
             </div>
 
         </section>

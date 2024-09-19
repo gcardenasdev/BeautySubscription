@@ -38,8 +38,10 @@ body {
 
 /* Media responsive */
 img, picture, svg, video {
-  display: block;
   max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -50,6 +52,12 @@ h1, h2, h3, h4, h5, h6 {
 p {
   max-width: 75ch;
   text-wrap: pretty; /* Prevents orphans on lines */
+}
+
+.flex-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -79,7 +87,7 @@ ul, ol {
 .card{
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   width: 21em;
-  height: 14em;
+  height: auto;
   padding: 2em;
   display: flex;
   flex-direction: column;
@@ -87,6 +95,19 @@ ul, ol {
   text-align: center;
   border-radius: 10px;
   background-image: linear-gradient(#fff 35%, rgb(0,0,0,0) 35%);
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+.card-container {
+  display: grid;
+  gap: 3em;
+  padding-top: 1em;
 }
 
 .card-body{
@@ -103,107 +124,6 @@ h2 {
   font-size: 2em;
 }
 
-/* Nav Bar Styles*/
-
-  
-.logo a{
-  font-family: var(--f-main);
-  font-weight: 600;
-  font-size: 2em;
-  color: var(--gunmetal);
-}
-
-header {
-  background-color:var(--alabaster);
-  padding: 1em 0;
-}
-
-
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 1em;
-}
-
-.primary-nav {
-  position: absolute;
-  background-color: var(--alabaster);
-  top: 4.3125em;
-  left: 0;
-  width: 100%;
-}
-
-.primary-nav_list {
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.5s;
-}
-
-.primary-nav_list:nth-child(2) {
-
-  border-top: 5px solid red;
-  border-bottom: 5px solid red;
-
-}
-
-.primary-nav_item {
-  padding: 0.6em 1em;
-  font-size: 1.2em;
-  font-weight: 600;
-}
-
-.primary-nav_item a {
-  display: inline-block;
-  padding: 0.05em;
-  color: var(--gunmetal);
-  letter-spacing: 0.05em;
-}
-
-.primary-nav_item a:hover, .primary-nav_item a:focus {
-  color: var(--night);
-  background-color: red;
-}
-
-#checkbox{
-  display: none;
-}
-
-#checkbox:checked ~ nav ul{
-  max-height: 200px;
-  padding: 15px 0;
-  transition: all 0.5s;
-}
-
-.burger-icon {
-  margin-top: 0.3em;
-}
-
-@media (min-width: 768px){
-  .mobile-icons{
-    display: none;
-  }
-
-  .nav-container{
-    padding: 0 4em;
-  }
-
-  .primary-nav{
-    position: relative;
-    top: -10px;
-    background-color: transparent;
-  }
-
-  .primary-nav_list{
-    max-height: 70px;
-    padding: 15px 0;
-    text-align: right;
-  }
-
-  .primary-nav__item{
-    display:inline-flex;
-    padding-left: 20px;
-  }
-}
 
 /*Hero Section*/
 
@@ -229,18 +149,19 @@ header {
   color: var(--gunmetal);
   padding: 5% 37% 5% 5%;
   z-index: 0;
-  top: 1;
+  top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   margin: 1em 3em 0.8em 0;
+  max-width: 78em;
 }
 
 .hero-btn {
   background-color: var(--pink);
   border: none;
   color: var(--gunmetal);
-  padding: 0.625em 1em;
+  padding: 0.625em 4em;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -249,21 +170,73 @@ header {
   font-size: 0.7em;
   text-transform: uppercase;
 }
-/* About Section */
 
+@media screen and (min-width: 40em){
 
+  .overlay-text h1{
+    font-size: 5em;
+  }
 
+  .overlay-text p {
+    font-size: 1.5em;
+  }
 
+  .hero-btn {
+    font-size: 1.5em;
+    max-width: 20em;
+    padding: 1.5em 4em;
+  }
 
+}
 
 
 
 /* Pricing Section*/
 .pricing {
   background-color: var(--pink);
+  padding: 5em 0;
 }
 
 .pricing-card_price{
   font-size: 2em;
   font-weight: 600;
 }
+
+
+/* About Section*/
+
+
+
+@media screen and (min-width: 40em){
+
+  .about {
+    display: grid;
+    gap: 3em;
+    
+  }
+  .about-header {
+    display: flex;
+    flex-direction: row;
+    gap: 4em;
+    max-width: 30em;
+    margin: 0 6em;
+  }
+  
+  .about-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+    flex-shrink: 0;
+    max-width: 25em;
+  }
+  
+  .card-container {
+    display: flex;
+    gap: 3em;
+    padding: 3em 0;
+  }
+
+  
+  }
