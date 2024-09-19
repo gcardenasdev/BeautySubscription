@@ -1,5 +1,7 @@
 import beautybox from './assets/beauty-box.jpg'
 import Bag from './Bag.jsx'
+import Truck from './Truck.jsx';
+import Heart from './Heart.jsx';
 import Card from './Card.jsx';
 
 
@@ -23,8 +25,8 @@ function About(){
                 
                     <div className="card-container">
                         <Card icon={<Bag fillColor="black" size={48}/>} title="Become a Subscriber" description="Choose your membership from our monthly, quarterly, and annual plans."/>
-                        <Card icon={<Bag fillColor="black" size={48}/>} title="Monthly Deliveries" description="You will receive a monthly box with three full sized products for you to enjoy plus a variety of products for you to try!"/>
-                        <Card icon={<Bag fillColor="black" size={48}/>} title="Enjoy Healthier Skin" description="Every product we send you is formulated for sensitive skin for a healthier you!"/>
+                        <Card icon={<Truck  fillColor="black" size={48}/>} title="Monthly Deliveries" description="You will receive a monthly box with three full sized products for you to enjoy plus a variety of products for you to try!"/>
+                        <Card icon={<Heart fillColor="black" size={48}/>} title="Enjoy Healthier Skin" description="Every product we send you is formulated for sensitive skin for a healthier you!"/>
                     </div>
                 
             </section>
