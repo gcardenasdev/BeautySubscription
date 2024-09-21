@@ -1,10 +1,11 @@
 import backgroundVideo from './assets/heroVideo.mp4'
+import {motion} from 'framer-motion'
 
 function Hero() {
     return(
 
         <>
-        <section className="hero">
+        <motion.section className="hero">
              <video autoPlay loop muted>
                 <source src={backgroundVideo} typr="video/mp4"/>
             </video>
@@ -14,7 +15,7 @@ function Hero() {
                 <a href="#Shop"><button className="hero-btn">Get Yours Now</button></a>
             </div>
 
-        </section>
+        </motion.section>
            
         </>
     );

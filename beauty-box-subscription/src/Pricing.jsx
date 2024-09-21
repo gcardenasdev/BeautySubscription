@@ -1,10 +1,15 @@
 import PricingCard from './PricingCard.jsx'
+import {motion} from 'framer-motion'
 
 function Pricing(){
     return(
 
         <>
-        <section className="pricing container" id="Pricing">
+        <motion.section className="pricing container" id="Pricing"
+                       initial={{opacity: 0, y: 50}}
+                       whileInView={{opacity: 1, y: 0, transition: {delay: 0.2, duration: 0.5}}}
+                       viewport={{once: true, amount: 0.1}}
+        >
             <h2>
                 Choose Your Plan
             </h2>
@@ -14,7 +19,7 @@ function Pricing(){
                 <PricingCard title="Annual Plan" price="$360.00" description="Billed Annually"/>
             </div>
 
-        </section>
+        </motion.section>
  
         </>
     );

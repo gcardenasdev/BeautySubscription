@@ -1,10 +1,10 @@
-import {useState} from 'react'
+import {useState, useRef} from 'react'
 import styles from './NavBar.module.css'
 
 
 
 function NavBar(){
-
+    const navRef = useRef();
     const [isActive, setIsActive] = useState(false);
 
     const toggleActiveClass = () => {

@@ -15,8 +15,8 @@ function Footer(){
                 <Pintrest fillColor="black" size={25}/>
             </div>
             <div className={styles.links}>
-                <p>About</p>
-                <p>How It Works</p>
+                <p><a href="#About">About</a></p>
+                <p><a href="#Pricing">How It Works</a></p>
                 <p>Contact</p>
             </div>
 

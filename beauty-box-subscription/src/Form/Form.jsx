@@ -1,9 +1,14 @@
 import styles from './Form.module.css'
+import {motion} from 'framer-motion'
 
 function Form(){
 return(
     <>
-    <section className={styles.form} id="Shop">
+    <motion.section className={styles.form} id="Shop"
+        initial={{opacity: 0, y: 50}}
+        whileInView={{opacity: 1, y: 0, transition: {delay: 0.2, duration: 0.5}}}
+        viewport={{once: false, amount: 0.1}}
+    >
         <h2>Check Out to Start Your Membership</h2>
         <form>
             <div className={styles.formbox}>
@@ -61,7 +66,7 @@ return(
                 <input type="submit" value="Order Box"></input>
             </div>
         </form>
-    </section>
+    </motion.section>
     </>
 
 );
