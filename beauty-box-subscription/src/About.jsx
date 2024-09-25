@@ -3,6 +3,7 @@ import Bag from './Bag.jsx'
 import Truck from './Truck.jsx';
 import Heart from './Heart.jsx';
 import Card from './Card.jsx';
+import {motion} from 'framer-motion'
 
 
 function About(){
@@ -11,7 +12,11 @@ function About(){
 
         <>
         
-            <section className="about container" id="About">
+            <motion.section className="about container" id="About"
+                initial={{opacity: 0, y: 50}}
+                whileInView={{opacity: 1, y: 0, transition: {delay: 0.2, duration: 0.5}}}
+                viewport={{once: false, amount: 0.1}}
+            >
                     <div className="about-header flex-mobile">
                         <img src={beautybox}></img>
 
@@ -29,7 +34,7 @@ function About(){
                         <Card icon={<Heart fillColor="black" size={48}/>} title="Enjoy Healthier Skin" description="Every product we send you is formulated for sensitive skin for a healthier you!"/>
                     </div>
                 
-            </section>
+            </motion.section>
 
         </>
 
