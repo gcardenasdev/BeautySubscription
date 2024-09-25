@@ -7,18 +7,21 @@ import Pintrest from '../Pintrest.jsx';
 function Footer(){
     return(
         <>
-        <footer className="footer container">
-            <div className={styles.social}>
-                <Instagram fillColor="black" size={25}/>
-                <Facebook fillColor="black" size={25}/>
-                <Twitter fillColor="black" size={25}/>
-                <Pintrest fillColor="black" size={25}/>
+        <footer className={styles.footer}>
+            <div className={styles.left_desktop}>
+                <div className={styles.social}>
+                    <Instagram fillColor="black" size={25}/>
+                    <Facebook fillColor="black" size={25}/>
+                    <Twitter fillColor="black" size={25}/>
+                    <Pintrest fillColor="black" size={25}/>
+                </div>
+                <div className={styles.links}>
+                    <p><a href="#About">About</a></p>
+                    <p><a href="#Pricing">How It Works</a></p>
+                    <p>Contact</p>
+                </div>
             </div>
-            <div className={styles.links}>
-                <p><a href="#About">About</a></p>
-                <p><a href="#Pricing">How It Works</a></p>
-                <p>Contact</p>
-            </div>
+
 
             <div className={styles.copyright}>
                 <p>&copy; 2024 BeautyBox INC. All Rights Reserved</p>

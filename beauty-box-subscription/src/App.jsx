@@ -6,6 +6,7 @@ import About from './About.jsx'
 import Pricing from './Pricing.jsx'
 import Footer from './Footer/Footer.jsx'
 import Form from './Form/Form.jsx'
+import Gallery from './Gallery/PictureGallery.jsx'
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Hero/>
       <About/>
       <Pricing/>
+      <Gallery/>
       <Form/>
       <Footer/>
      

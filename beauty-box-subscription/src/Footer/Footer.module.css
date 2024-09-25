@@ -1,7 +1,17 @@
 
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
 .social {
     display: flex;
+    justify-content: center;
     gap: 1em;
+
 }
 
 .links {
@@ -16,7 +26,24 @@
 
 @media screen and (min-width: 40em){
 
+.footer {
+    flex-direction: row;
+    align-items: flex-end;
+    align-content: flex-start;
+    justify-content: space-around;
+}
 
+.left_desktop {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+
+    
+}
+
+.links {
+    text-align: left;
+}
 
 
 }

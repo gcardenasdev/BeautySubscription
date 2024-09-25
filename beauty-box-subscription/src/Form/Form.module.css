@@ -1,3 +1,15 @@
+.flex_row {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.flex_column{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
 .form {
     background-color: #FFFCFA;
     display: flex;
@@ -13,8 +25,6 @@
 }
 
 .formbox {
-    display: flex;
-    flex-direction: column;
     gap: 0.5em;
     border: 1px solid #FBE9E6;
     border-radius: 10px;
@@ -22,6 +32,10 @@
     margin: 1em 0;
     background-color: #fff;
     width: 27em; 
+}
+
+.formbox > * {
+    gap: 1em;
 }
 
 .formbox h3 {
@@ -39,4 +53,141 @@ input{
 input[type="submit"]{
     background-color: #FBE9E6;
     padding: 1em 0;
+    cursor: pointer;
 }
+
+.CreditPayment {
+    display:flex;
+    flex-direction: column;
+}
+
+.payment {
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.cardInfo {
+    display: flex;
+    gap: 0.5em;
+    margin-top: 0.5em;
+}
+
+.cvv input {
+    max-width: 5.8em;
+}
+
+.zip input {
+    max-width: 7.6em;
+}
+
+.expDate{
+    display: flex;
+    gap: 0.5em;
+}
+
+.expDate input{
+    max-width: 4em;
+}
+
+.name {
+    display: flex;
+    gap: 0.5em;
+}
+
+.name input {
+    max-width: 11em;
+}
+
+.rightBox{
+    gap: 2em;
+}
+
+.space_between {
+    justify-content: space-between;
+}
+
+.promo {
+    width: 100%;
+}
+
+select {
+    display:flex;
+    padding: 1em;
+}
+
+.radio_container {
+    display: block;
+    position: relative;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+    
+  }
+
+  .radio_container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    
+  }
+
+  .checkmark {
+    position: absolute;
+    top: 16px;
+    left: 30px;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+
+  .radio_container input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+
+.option_btn {
+    width: 100%;
+    position: relative;
+    height: 60px;
+    border: 1px solid #FBE9E6;
+    box-sizing: border-box;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    font-weight: 800;
+}
+
+@media screen and (min-width: 40em){
+
+    .flex_row_mobile {
+        display: flex;
+        flex-direction: row;
+        gap: 1em;
+    }
+
+    form {
+        display: flex;
+        flex-direction: row;
+        gap: 2em;
+    }
+
+    .formbox {
+        width: 100%;
+        height: fit-content;
+    }
+
+    .card_num input {
+        max-width: 25em;
+    }
+
+    .first_name > input, .last_name > input{
+        max-width: 30em;
+    }
+
+
+}
+
