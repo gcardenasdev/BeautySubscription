@@ -1,0 +1,60 @@
+.hero {
+    position:relative;
+  }
+  
+  .overlay_text h1{
+    font-size: 1.7em;
+  }
+  
+  .overlay_text p {
+    font-size: 0.7em;
+  }
+  
+  .overlay_text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    position: absolute;
+    background-color: hsl(0, 0%, 100%, 0.6);
+    color: var(--gunmetal);
+    padding: 5% 37% 5% 5%;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: 1em 3em 0.8em 0;
+    max-width: 78em;
+  }
+  
+  .hero_btn {
+    background-color: var(--pink);
+    border: none;
+    color: var(--gunmetal);
+    padding: 0.625em 4em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-size: 0.7em;
+    text-transform: uppercase;
+  }
+  
+  @media screen and (min-width: 40em){
+  
+    .overlay_text h1{
+      font-size: 5em;
+    }
+  
+    .overlay_text p {
+      font-size: 1.5em;
+    }
+  
+    .hero_btn {
+      font-size: 1.5em;
+      max-width: 20em;
+      padding: 1.5em 4em;
+    }
+  
+  }
