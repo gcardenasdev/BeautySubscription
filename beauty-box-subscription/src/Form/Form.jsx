@@ -1,9 +1,68 @@
 import styles from './Form.module.css'
 import {motion} from 'framer-motion'
 import Refresh from './Refresh.jsx'
+import { useState } from 'react';
 
-function Form(){
-return(
+function Form() {
+    
+    const [price, setPrice] = useState("39.99");
+    const [promo, setPromo] = useState("");
+    const [discount, setDiscount] = useState("0.00");
+
+    const handlePromoChange = (p) => {
+
+        setPromo(p.target.value)
+    }
+
+    const handleDiscount = (x) => {
+
+        x.preventDefault(); 
+        
+        setPromo("");
+
+        if (promo === "promo15") {
+
+            setDiscount(0.15 * price);
+        } else {
+            setDiscount(0);
+        }
+
+
+    }
+
+    const handleChange = (e) => {
+        setPrice(e.target.value);
+        
+    }
+
+    const renderResult = () => {
+        let result;
+
+        switch (price)
+        {
+            case "39.99": 
+                result = 39.99 - discount;
+            break;
+
+            case "140.00": 
+                result = 140.00 - discount;
+            break;
+
+            case "360.00": 
+                result = 360.00 - discount;
+            break;
+
+            default:
+                result = price;
+
+        }
+
+
+        return result;
+     }
+
+    
+    return(
     <>
     <motion.section className={styles.form} id="Shop"
         initial={{opacity: 0, y: 50}}
@@ -52,33 +111,21 @@ return(
                 <div className={`${styles.formbox} ${styles.flex_column} `}>
                     <h3>Payment Info</h3>
                     <div>
-                        <label className={styles.radio_container}>
-                            <input type="radio" name="CREDIT_CARD"  value="CREDIT_CARD"/>
-                            <div role="button" className={styles.option_btn}>
-                            <div>
-                                    <div>
-                                        <span className={styles.checkmark}></span>
-                                    </div>
-                                </div>
-                                <div>Credit or Debit Card</div>
-                            </div>
-                            
-                        </label>
-                        
-                        <label className={styles.radio_container}>
-                            <input type="radio" name="PAYPAL"  value="PAYPAL" />
-                            <div role="button" className={styles.option_btn}>
-                                <div>
-                                    <div>
-                                        <span className={styles.checkmark}>
+                        <div className={styles.option_btn}>
+                            <label className={styles.container}>Credit/Debit
+                            <input type="radio" name="radio"></input>
+                            <span className={styles.checkmark}></span>
+                            </label>
+                        </div>
+  
 
-                                        </span>
-                                    </div>
-                                </div>
-                                <div>Paypal</div>
-                            </div>
-                            
-                        </label>
+                        <div className={styles.option_btn}>
+                            <label className={styles.container}>Paypal
+                            <input type="radio" name="radio"></input>
+                            <span className={styles.checkmark}></span>
+                            </label>
+                        </div>
+              
                         
                     </div>
                     <div className={styles.flex_column}>
@@ -130,10 +177,10 @@ return(
 
             <div className={`${styles.formbox} ${styles.flex_column} ${styles.rightBox}`}>
                 <h3>Order Summary</h3>
-                <select>
-                    <option value="Monthly">Monthly Subscription &#160;<p>$39.99</p></option>
-                    <option value="Quarterly">Quarterly Subscription &#160;<p>$140.00</p></option>
-                    <option value="Annual">Annual Subscription &#160;<p>$360.00</p></option>
+                <select value={price} onChange={handleChange}>
+                    <option value="39.99">Monthly Subscription &#160;&#160;$39.99</option>
+                    <option value="140.00">Quarterly Subscription &#160;&#160;$140.00</option>
+                    <option value="360.00">Annual Subscription &#160;&#160;$360.00</option>
                 </select>
                 <div className={`${styles.flex_row} ${styles.space_between}`}>
                     <p>Shipping*</p>
@@ -143,11 +190,11 @@ return(
                     <form className={styles.flex_column}>
                         <label className={`${styles.flex_row} ${styles.space_between}`} >
                             Promo Code
-                            <p>0.00</p>
+                            <p>{discount}</p>
                         </label>
                     <div className={styles.flex_row}>
-                        <input type="text" className={styles.promo}></input>
-                        <button>{<Refresh fillColor="black" size={27}/>}</button>
+                        <input type="text" value={promo}  onChange={handlePromoChange} className={styles.promo}></input>
+                        <button onClick={x => handleDiscount(x)}>{<Refresh fillColor="black" size={27}/>}</button>
                     </div>
                     
                     </form>
@@ -160,7 +207,7 @@ return(
                </div>
                <div className={`${styles.flex_row} ${styles.space_between}`}>
                 <p>Total</p>
-                <p>$39.99</p>
+                <p>${renderResult()}</p>
                </div>
     
         

@@ -1,8 +1,8 @@
 import styles from './Footer.module.css'
-import Instagram from '../Instagram.jsx';
-import Facebook from '../Facebook.jsx';
-import Twitter from '../Twitter.jsx';
-import Pintrest from '../Pintrest.jsx';
+import Instagram from '../SVG/Instagram.jsx';
+import Facebook from '../SVG/Facebook.jsx';
+import Twitter from '../SVG/Twitter.jsx';
+import Pintrest from '../SVG/Pintrest.jsx';
 
 function Footer(){
     return(

@@ -1,7 +1,7 @@
-import beautybox from './assets/beauty-box.jpg'
-import Bag from './Bag.jsx'
-import Truck from './Truck.jsx';
-import Heart from './Heart.jsx';
+import beautybox from '../assets/beauty-box.jpg'
+import Bag from '../SVG/Bag.jsx'
+import Truck from '../SVG/Truck.jsx';
+import Heart from '../SVG/Heart.jsx';
 import Card from './Card.jsx';
 import {motion} from 'framer-motion'
 
