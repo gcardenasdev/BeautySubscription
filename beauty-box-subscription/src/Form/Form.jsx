@@ -2,8 +2,21 @@ import styles from './Form.module.css'
 import {motion} from 'framer-motion'
 import Refresh from './Refresh.jsx'
 import { useState } from 'react';
+import axios from 'axios';
+
+
+
+import {Link, useNavigate, useNavigation} from 'react-router-dom'
 
 function Form() {
+
+    const [values, setValues] = useState ({
+        email: '',
+        password: '',
+        country: '',
+        state: '',
+        zipcode: ''
+    })
     
     const [price, setPrice] = useState("39.99");
     const [promo, setPromo] = useState("");
@@ -61,6 +74,20 @@ function Form() {
         return result;
      }
 
+     const navigate = useNavigate()
+
+     function handleSubmit(e) {
+        e.preventDefault()
+
+        axios.post('/add_user', values).then((res) => {
+        
+        navigate('./Confirmation/Confirmation.jsx')
+        console.log(res)
+
+     }).catch((err)=>console.log(err))
+
+     }
+
     
     return(
     <>
@@ -70,19 +97,19 @@ function Form() {
         viewport={{once: false, amount: 0.1}}
     >
         <h2>Check Out to Start Your Membership</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
             <div className={styles.leftBox}>
                 <div className={`${styles.formbox} ${styles.flex_column} `}>
                     <h3>Create Your Account</h3>
                     <div className={`${styles.flex_row_mobile}`}>
                         <div className={styles.flex_column}>
-                            <label>Email </label>
-                            <input type="email"/>
+                            <label htmlFor='email'>Email </label>
+                            <input type="email" name='emsil' onChange={(e) => setValues({...values, email: e.target.value})}/>
                         </div>
 
                         <div className={styles.flex_column}>
-                            <label>Password </label>
-                            <input type="password"/>
+                            <label htmlFor='password'>Password </label>
+                            <input type="password" name='password' onChange={(e) => setValues({...values, password: e.target.value})}/>
                         </div>
                     </div>
                 </div>
@@ -91,16 +118,16 @@ function Form() {
                     <h3>Shipping Location</h3>
                     <div className={` ${styles.flex_column} ${styles.flex_row_mobile}`}>
                         <div className={`${styles.flex_column}`}>
-                            <label>Country</label>
-                            <input type="text"/>
+                            <label htmlFor='country'>Country</label>
+                            <input type="text" name='country' onChange={(e) => setValues({...values, country: e.target.value})}/>
                         </div>
                         <div className={`${styles.flex_column}`}>
-                            <label>State</label>
-                            <input type="text"/>
+                            <label htmlFor='state'>State</label>
+                            <input type="text" name='state' onChange={(e) => setValues({...values, state: e.target.value})}/>
                         </div>
                         <div className={`${styles.flex_column}`}>
-                            <label>Zip Code</label>
-                            <input type="text" pattern="[0-9]{5}"/>
+                            <label htmlFor='zipcode'>Zip Code</label>
+                            <input type="text" name='zipcode' pattern="[0-9]{5}" onChange={(e) => setValues({...values, zipcode: e.target.value})}/>
                         </div>
     
                    
