@@ -3,20 +3,10 @@ import {motion} from 'framer-motion'
 import Refresh from './Refresh.jsx'
 import { useState } from 'react';
 import axios from 'axios';
-
-
-
 import {Link, useNavigate, useNavigation} from 'react-router-dom'
 
 function Form() {
 
-    const [values, setValues] = useState ({
-        email: '',
-        password: '',
-        country: '',
-        state: '',
-        zipcode: ''
-    })
     
     const [price, setPrice] = useState("39.99");
     const [promo, setPromo] = useState("");
@@ -44,6 +34,27 @@ function Form() {
     }
 
     const handleChange = (e) => {
+
+        let result;
+     
+
+        switch (price)
+        {
+            case "39.99": 
+            result = "Monthly";
+        break;
+
+        case "140.00": 
+            result = "Quarterly";
+        break;
+
+        case "360.00": 
+            result = "Annual";
+        break;
+        }
+
+
+        setValues({...values, sub_type: result});
         setPrice(e.target.value);
         
     }
@@ -74,17 +85,33 @@ function Form() {
         return result;
      }
 
+     const [values, setValues] = useState ({
+        email: '',
+        password: '',
+        country: '',
+        state: '',
+        zipcode: '',
+        sub_type: '',
+        total: renderResult()
+
+    })
+
+
+
      const navigate = useNavigate()
 
      function handleSubmit(e) {
         e.preventDefault()
 
-        axios.post('/add_user', values).then((res) => {
+
+        axios.post('http://localhost:5000/order', values).then((res) => {
         
-        navigate('./Confirmation/Confirmation.jsx')
+        navigate('/confirmation')
         console.log(res)
 
      }).catch((err)=>console.log(err))
+
+
 
      }
 
@@ -180,8 +207,8 @@ function Form() {
                             <div>
                                 <label>Expiration Date</label>
                                 <div className={styles.expDate}>
-                                    <input type="tel" placeholder="MM" pattern="[0-9]*" maxlength="2"/>
-                                    <input type="tel" placeholder="YY" pattern="[0-9]*" maxlength="4"/>
+                                    <input type="tel" placeholder="MM" pattern="[0-9]*" maxLength="2"/>
+                                    <input type="tel" placeholder="YY" pattern="[0-9]*" maxLength="4"/>
                                 </div>
                             </div>
                             <div className={styles.cvv}>
@@ -214,7 +241,7 @@ function Form() {
                     <p>0.00</p>
                 </div>
                 <div>
-                    <form className={styles.flex_column}>
+                    <div className={styles.flex_column}>
                         <label className={`${styles.flex_row} ${styles.space_between}`} >
                             Promo Code
                             <p>{discount}</p>
@@ -224,7 +251,7 @@ function Form() {
                         <button onClick={x => handleDiscount(x)}>{<Refresh fillColor="black" size={27}/>}</button>
                     </div>
                     
-                    </form>
+                    </div>
              
                 </div>
     
