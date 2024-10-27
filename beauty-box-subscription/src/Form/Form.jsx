@@ -1,7 +1,7 @@
 import styles from './Form.module.css'
 import {motion} from 'framer-motion'
 import Refresh from './Refresh.jsx'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import {Link, useNavigate, useNavigation} from 'react-router-dom'
 
@@ -11,6 +11,7 @@ function Form() {
     const [price, setPrice] = useState("39.99");
     const [promo, setPromo] = useState("");
     const [discount, setDiscount] = useState("0.00");
+    const [subTotal, setSubTotal] = useState("");
 
     const handlePromoChange = (p) => {
 
@@ -25,7 +26,7 @@ function Form() {
 
         if (promo === "promo15") {
 
-            setDiscount(0.15 * price);
+            setDiscount(0.15);
         } else {
             setDiscount(0);
         }
@@ -37,29 +38,27 @@ function Form() {
 
         let result;
      
-
-        switch (price)
+        switch (e.target.value)
         {
             case "39.99": 
             result = "Monthly";
         break;
 
-        case "140.00": 
+        case "140": 
             result = "Quarterly";
         break;
 
-        case "360.00": 
+        case "360": 
             result = "Annual";
         break;
         }
 
-
-        setValues({...values, sub_type: result});
         setPrice(e.target.value);
+        setValues({...values, sub_type: result});
         
     }
 
-    const renderResult = () => {
+    /* const renderResult = () => {
         let result;
 
         switch (price)
@@ -83,7 +82,7 @@ function Form() {
 
 
         return result;
-     }
+     } */
 
      const [values, setValues] = useState ({
         email: '',
@@ -92,19 +91,42 @@ function Form() {
         state: '',
         zipcode: '',
         sub_type: '',
-        total: renderResult()
+        total: ''
 
     })
 
+    useEffect(() => {
+        let result;
+        let discountedPrice;
+        switch (values.sub_type)
+        {
+            case "Monthly": 
+                discountedPrice = discount * price;
+                result = price - discountedPrice;
+            break;
 
+            case "Quarterly": 
+            discountedPrice = discount * price;
+                result = price - discountedPrice;
+            break;
+
+            case "Annual": 
+            discountedPrice = discount * price;
+                result = price - discountedPrice;
+            break;
+
+            default:
+                result = price;
+        }
+        setSubTotal(parseFloat(result).toFixed(2));
+        }, [values, discount]); 
 
      const navigate = useNavigate()
 
      function handleSubmit(e) {
         e.preventDefault()
 
-
-        axios.post('http://localhost:5000/order', values).then((res) => {
+        axios.post('http://localhost:5000/order', {...values, total: subTotal}).then((res) => {
         
         navigate('/confirmation')
         console.log(res)
@@ -233,8 +255,8 @@ function Form() {
                 <h3>Order Summary</h3>
                 <select value={price} onChange={handleChange}>
                     <option value="39.99">Monthly Subscription &#160;&#160;$39.99</option>
-                    <option value="140.00">Quarterly Subscription &#160;&#160;$140.00</option>
-                    <option value="360.00">Annual Subscription &#160;&#160;$360.00</option>
+                    <option value="140">Quarterly Subscription &#160;&#160;$140.00</option>
+                    <option value="360">Annual Subscription &#160;&#160;$360.00</option>
                 </select>
                 <div className={`${styles.flex_row} ${styles.space_between}`}>
                     <p>Shipping*</p>
@@ -244,7 +266,7 @@ function Form() {
                     <div className={styles.flex_column}>
                         <label className={`${styles.flex_row} ${styles.space_between}`} >
                             Promo Code
-                            <p>{discount}</p>
+                            <p>{(discount * price).toFixed(2)}</p>
                         </label>
                     <div className={styles.flex_row}>
                         <input type="text" value={promo}  onChange={handlePromoChange} className={styles.promo}></input>
@@ -261,7 +283,8 @@ function Form() {
                </div>
                <div className={`${styles.flex_row} ${styles.space_between}`}>
                 <p>Total</p>
-                <p>${renderResult()}</p>
+                {/* <p>${renderResult()}</p> */}
+                <p>${subTotal}</p>
                </div>
     
         

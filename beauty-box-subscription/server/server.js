@@ -21,7 +21,7 @@ const port = 5000
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "",
+    password: "password",
     database: "beauty_box"
 })
 
