@@ -6,14 +6,38 @@ import axios from 'axios';
 function Confirmation() {
 
 
-  const [data, setData] = useState([]);
-  const { email } = useParams();
-  useEffect(() => {
-    axios.get(`/get_order/${email}`).then((res) => {
-        setData(res.data);
-      }).catch((err) => console.log(err));
-  }, [email]);
+  const [data, setData] = useState();
+  const order_num = new URLSearchParams(window.location.search).get('order_num');
 
+
+  useEffect(() => {
+
+    async function fetchRow() {
+        try {
+          await axios.get(`http://localhost:5000/confirmation`,{
+            params: {
+              order_num: order_num
+            }
+          }).then(response => {
+            // Handle response
+          setData(response.data[0]);
+          console.log(response);
+        })
+        .catch(err => {
+            // Handle errors
+            console.error(err);
+        });
+        } catch (error) {
+          console.error('Error fetching the row:', error);
+        }
+    };
+
+    fetchRow();
+  }, [order_num]);
+
+
+if(data == undefined)
+  return <>WHoops!</>
     return (
   
     

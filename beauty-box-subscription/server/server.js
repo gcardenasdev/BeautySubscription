@@ -45,21 +45,21 @@ app.post('/order', (req, res) => {
 
     db.query(sql, values, (err, result)=>{
         if(err) return res.json({message: 'Something unexpected has occured' + err})
-            return res.json({success: "User added successfully"})
+            console.log(result)
+            return res.json({success: "User added successfully", id: result.insertId})
     })
 
 
 })
 
-app.get("/get_order/:order_num", (req, res) => {
-    const email = req.body.email;
-    const sql = "SELECT * FROM orders WHERE `email`= ?";
-    db.query(sql, [email], (err, result) => {
+app.get('/confirmation', (req, res)=>{
+    const order_num = parseInt(req.query.order_num);
+    const sql = "SELECT * FROM orders WHERE `order_num`= ?";
+    db.query(sql, [order_num], (err, result) => {
       if (err) res.json({ message: "Server error" });
       return res.json(result);
     });
   });
-
 
 
 app.listen(port, () => {

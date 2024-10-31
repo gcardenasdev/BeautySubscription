@@ -58,31 +58,6 @@ function Form() {
         
     }
 
-    /* const renderResult = () => {
-        let result;
-
-        switch (price)
-        {
-            case "39.99": 
-                result = 39.99 - discount;
-            break;
-
-            case "140.00": 
-                result = 140.00 - discount;
-            break;
-
-            case "360.00": 
-                result = 360.00 - discount;
-            break;
-
-            default:
-                result = price;
-
-        }
-
-
-        return result;
-     } */
 
      const [values, setValues] = useState ({
         email: '',
@@ -90,7 +65,7 @@ function Form() {
         country: '',
         state: '',
         zipcode: '',
-        sub_type: '',
+        sub_type: 'Monthly',
         total: ''
 
     })
@@ -128,7 +103,7 @@ function Form() {
 
         axios.post('http://localhost:5000/order', {...values, total: subTotal}).then((res) => {
         
-        navigate('/confirmation')
+        navigate(`/confirmation?order_num=${res.data.id}`)
         console.log(res)
 
      }).catch((err)=>console.log(err))
@@ -283,7 +258,6 @@ function Form() {
                </div>
                <div className={`${styles.flex_row} ${styles.space_between}`}>
                 <p>Total</p>
-                {/* <p>${renderResult()}</p> */}
                 <p>${subTotal}</p>
                </div>
     
