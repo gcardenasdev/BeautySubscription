@@ -61,7 +61,7 @@ if(data == undefined)
 
             <div className={styles.detail_content}>
               <p>{data.sub_type}</p>
-              <p>{data.total}</p>
+              <p>${data.total}</p>
             </div>
 
 
