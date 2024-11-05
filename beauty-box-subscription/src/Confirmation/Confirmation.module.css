@@ -1,0 +1,49 @@
+.confirmation_section {
+  
+    background-color: #FBE9E6;
+}
+
+p {
+    font-size: 1.5rem;
+}
+
+.h1 {
+    font-size: 3em;
+}
+
+.h3 {
+    font-size: 2rem;
+}
+.container {
+    display:flex;
+    flex-direction: column;
+    padding: 10rem;
+    margin: 5rem;
+    background-color: #FFFCFA;
+}
+
+.heading {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.summary{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 1rem;
+}
+
+.details {
+    display: flex;
+    gap: 5em;
+}
+
+.detail_headings p{
+    padding-bottom: 1.5rem;
+}
+
+.detail_content p{
+    padding-bottom: 1.5rem;
+}
