@@ -55,13 +55,13 @@ if(data == undefined)
           <div className={styles.details}>
 
             <div className={styles.detail_headings}>
-              <p>Subscription type:</p>
-              <p>Total:</p>
+              <p className={styles.confirmation_p}>Subscription type:</p>
+              <p className={styles.confirmation_p}>Total:</p>
             </div>
 
             <div className={styles.detail_content}>
-              <p>{data.sub_type}</p>
-              <p>${data.total}</p>
+              <p className={styles.confirmation_p}>{data.sub_type}</p>
+              <p className={styles.confirmation_p}>${data.total}</p>
             </div>
 
 

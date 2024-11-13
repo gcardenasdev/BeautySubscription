@@ -1,5 +1,6 @@
 .hero {
     position:relative;
+
   }
   
   .overlay_text h1{
@@ -17,7 +18,7 @@
     position: absolute;
     background-color: hsl(0, 0%, 100%, 0.6);
     color: var(--gunmetal);
-    padding: 5% 37% 5% 5%;
+    padding: 5% 27% 5% 5%;
     z-index: 0;
     top: 0;
     left: 0;
@@ -31,7 +32,7 @@
     background-color: var(--pink);
     border: none;
     color: var(--gunmetal);
-    padding: 0.625em 4em;
+    padding: 0.625rem 2rem;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -42,9 +43,18 @@
   }
   
   @media screen and (min-width: 40em){
+
+    .hero {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .overlay_text {
+      padding: 5% 21% 5% 5%;
+    }
   
     .overlay_text h1{
-      font-size: 5em;
+      font-size: 4rem;
     }
   
     .overlay_text p {
@@ -52,9 +62,9 @@
     }
   
     .hero_btn {
-      font-size: 1.5em;
+      font-size: 1rem;
       max-width: 20em;
-      padding: 1.5em 4em;
+      padding: 1.5rem 2rem;
     }
   
   }

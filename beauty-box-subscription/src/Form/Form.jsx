@@ -4,6 +4,8 @@ import Refresh from './Refresh.jsx'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import {Link, useNavigate, useNavigation} from 'react-router-dom'
+import CreditCard from './CreditCard.jsx';
+import Paypal from './Paypal.jsx';
 
 function Form() {
 
@@ -12,6 +14,11 @@ function Form() {
     const [promo, setPromo] = useState("");
     const [discount, setDiscount] = useState("0.00");
     const [subTotal, setSubTotal] = useState("");
+    const [selectedOption, setSelectedOption] = useState(null);
+
+    const handleOptionChange = (e) => {
+        setSelectedOption(e.target.value);
+    }
 
     const handlePromoChange = (p) => {
 
@@ -128,12 +135,12 @@ function Form() {
                     <div className={`${styles.flex_row_mobile}`}>
                         <div className={styles.flex_column}>
                             <label htmlFor='email'>Email </label>
-                            <input type="email" name='emsil' onChange={(e) => setValues({...values, email: e.target.value})}/>
+                            <input type="email" name='email' onChange={(e) => setValues({...values, email: e.target.value})} required/>
                         </div>
 
                         <div className={styles.flex_column}>
                             <label htmlFor='password'>Password </label>
-                            <input type="password" name='password' onChange={(e) => setValues({...values, password: e.target.value})}/>
+                            <input type="password" name='password' onChange={(e) => setValues({...values, password: e.target.value})} required/>
                         </div>
                     </div>
                 </div>
@@ -143,15 +150,15 @@ function Form() {
                     <div className={` ${styles.flex_column} ${styles.flex_row_mobile}`}>
                         <div className={`${styles.flex_column}`}>
                             <label htmlFor='country'>Country</label>
-                            <input type="text" name='country' onChange={(e) => setValues({...values, country: e.target.value})}/>
+                            <input type="text" name='country' onChange={(e) => setValues({...values, country: e.target.value})} required/>
                         </div>
                         <div className={`${styles.flex_column}`}>
                             <label htmlFor='state'>State</label>
-                            <input type="text" name='state' onChange={(e) => setValues({...values, state: e.target.value})}/>
+                            <input type="text" name='state' onChange={(e) => setValues({...values, state: e.target.value})} required/>
                         </div>
                         <div className={`${styles.flex_column}`}>
                             <label htmlFor='zipcode'>Zip Code</label>
-                            <input type="text" name='zipcode' pattern="[0-9]{5}" onChange={(e) => setValues({...values, zipcode: e.target.value})}/>
+                            <input type="text" name='zipcode' pattern="[0-9]{5}" onChange={(e) => setValues({...values, zipcode: e.target.value})} required/>
                         </div>
     
                    
@@ -164,7 +171,7 @@ function Form() {
                     <div>
                         <div className={styles.option_btn}>
                             <label className={styles.container}>Credit/Debit
-                            <input type="radio" name="radio"></input>
+                            <input type="radio" value="credit" checked={selectedOption === "credit"} onChange={handleOptionChange} name="radio"></input>
                             <span className={styles.checkmark}></span>
                             </label>
                         </div>
@@ -172,56 +179,18 @@ function Form() {
 
                         <div className={styles.option_btn}>
                             <label className={styles.container}>Paypal
-                            <input type="radio" name="radio"></input>
+                            <input type="radio" value="paypal" checked={selectedOption === "paypal"} onChange={handleOptionChange} name="radio"></input>
                             <span className={styles.checkmark}></span>
                             </label>
                         </div>
               
                         
                     </div>
-                    <div className={styles.flex_column}>
+                    <div>
+                        {selectedOption === 'credit' && <CreditCard />}
+                        {selectedOption === 'paypal' && <Paypal />}
+                    </div>
                     
-                        <div className={styles.name}>
-                            <div className={`${styles.flex_column} ${styles.first_name}`}>
-                                <label>First Name</label>
-                                <input type="text"/>
-                            </div>
-                            <div className={`${styles.flex_column} ${styles.last_name}`}>
-                                <label>Last Name</label>
-                                <input type="text"/>
-                            </div>
-                        
-                        
-                        </div>
-                    </div>
-                    <div className={styles.flex_column}>
-                        <div className={`${styles.flex_column} ${styles.card_num}`}>
-                            <label>Credit Card</label>
-                            <input type="tel"/>
-                        </div>
-
-                        <div className={styles.cardInfo}>
-                            <div>
-                                <label>Expiration Date</label>
-                                <div className={styles.expDate}>
-                                    <input type="tel" placeholder="MM" pattern="[0-9]*" maxLength="2"/>
-                                    <input type="tel" placeholder="YY" pattern="[0-9]*" maxLength="4"/>
-                                </div>
-                            </div>
-                            <div className={styles.cvv}>
-                                <label>CVV</label>
-                                <div>
-                                    <input type="text"/>
-                                </div>
-                            </div>
-                            <div className={styles.zip}>
-                                <label>Zip Code</label>
-                                <div>
-                                    <input type="text" pattern="[0-9]{5}"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             
