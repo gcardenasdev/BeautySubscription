@@ -65,10 +65,12 @@ app.post('/order', (req, res) => {
     });
 });
 
-const request2 = app.get('/confirmation', (req, res)=>{
+app.get('/confirmation', (req, res)=>{
     const order_num = parseInt(req.query.order_num);
     const sql = "SELECT * FROM orders WHERE `order_num`= ?";
+    
     console.log("This is order number: "+order_num);
+
     db.query(sql, [order_num], (err, result) => {
       if (err) res.json({ message: "Server error" });
       return res.json(result);
