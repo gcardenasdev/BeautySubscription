@@ -8,7 +8,7 @@ function Hero() {
         <>
         <motion.section className={styles.hero}>
              <video autoPlay loop muted>
-                <source src={backgroundVideo} typr="video/mp4"/>
+                <source src={backgroundVideo} type="video/mp4"/>
             </video>
             <div className={styles.overlay_text}>
                 <h1>Gentle Beauty at Your Doorstep</h1>

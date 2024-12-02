@@ -16,6 +16,9 @@ function Form() {
     const [subTotal, setSubTotal] = useState("");
     const [selectedOption, setSelectedOption] = useState(null);
 
+
+
+
     const handleOptionChange = (e) => {
         setSelectedOption(e.target.value);
     }
@@ -103,6 +106,8 @@ function Form() {
         setSubTotal(parseFloat(result).toFixed(2));
         }, [values, discount]); 
 
+    
+
      const navigate = useNavigate()
 
      function handleSubmit(e) {
@@ -111,11 +116,10 @@ function Form() {
         axios.post('http://localhost:5000/order', {...values, total: subTotal}).then((res) => {
         
         navigate(`/confirmation?order_num=${res.data.id}`)
+        
         console.log(res)
 
      }).catch((err)=>console.log(err))
-
-
 
      }
 
