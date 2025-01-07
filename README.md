@@ -27,7 +27,7 @@ Users should be able to:
 ### Demo
 
 
- ![Beauty Subscription Landing Page Demo Demo](./BeautySubscription.gif)
+ ![Beauty Subscription Landing Page Demo Demo]([./BeautySubscription.gif](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWprZmlsaWtrOGVhbjV5bDYxamR1bzRlemhpOGo4NDFlNzlodjd6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/H7rPGMZf3kcf6kCbcf/giphy.gif))
 
 ## My process
 
